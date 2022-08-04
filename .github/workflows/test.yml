@@ -16,5 +16,5 @@ jobs:
       - run: env
     env:
      PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
-     PACKAGE_NAME_IN_LIST: ${{ contains("hot, bananas", inputs.releasing_package) }}
+     PACKAGE_NAME_IN_LIST: ${{ contains(['hot', 'bananas'], inputs.releasing_package) }}
      PACKAGE_NAME_ITSELF: ${{ inputs.releasing_package }}
