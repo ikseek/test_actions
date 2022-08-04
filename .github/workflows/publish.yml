@@ -19,4 +19,4 @@ jobs:
   test:
     uses: ikseek/test_actions/.github/workflows/test.yml@main
     with:
-      releasing_package: "boom"
+      releasing_package: hot
