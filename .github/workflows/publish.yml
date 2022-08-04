@@ -16,9 +16,15 @@ on:
 
 jobs:
 
-  test:
+  testboom:
     uses: .github/workflows/test.yml@main
     secrets: inherit
     with:
-      package_name: boom
+      releasing_package: boom
+
+  testhot:
+    uses: .github/workflows/test.yml@main
+    secrets: inherit
+    with:
+      releasing_package: hot
 
