@@ -29,7 +29,7 @@ jobs:
 
   test_vars2:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.unit }}
+    if: ${{ github.event.inputs.unit == true }}
     steps:
       - run: env
     env:
