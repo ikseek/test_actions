@@ -17,8 +17,7 @@ on:
 jobs:
 
   test:
-    needs: [make_release_branch]
-    uses: ikseek/test_actions/new/main/.github/workflows/test.yml@master
+    uses: .github/workflows/test.yml@main
     secrets: inherit
     with:
       package_name: boom
