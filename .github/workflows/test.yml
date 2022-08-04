@@ -2,6 +2,12 @@ name: Build and test python packages
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
+      unit:
+        description: Unit tests
+        type: boolean
+        required: false
+
   workflow_call:
     inputs:
       releasing_package:
