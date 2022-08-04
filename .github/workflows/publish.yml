@@ -17,6 +17,6 @@ on:
 jobs:
 
   test:
-    uses: ".github/workflows/test.yml@main"
+    uses: ikseek/test_actions/.github/workflows/test.yml@main
     with:
       releasing_package: "boom"
