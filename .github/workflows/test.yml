@@ -26,6 +26,11 @@ jobs:
      PACKAGE_NAME_IN_LIST: ${{ contains('hot, bananas', inputs.releasing_package) }}
      PACKAGE_NAME_IS_HOT_OR_BANANAS: ${{ inputs.releasing_package == 'hot' || inputs.releasing_package == 'bananas' }}
      PACKAGE_NAME_ITSELF: ${{ inputs.releasing_package }}
+     EVENTS_UNIT: ${{ github.event.inputs.unit }}
+     EVENTS_UNIT_IS_TRUE: ${{ github.event.inputs.unit == true }}
+     EVENTS_UNIT_IS_STR: ${{ github.event.inputs.unit == 'true' }}
+     EVENTS_UNIT_IS_NULL: ${{ github.event.inputs.unit == null }}
+     EVENTS_UNIT_IS_EMPTY: ${{ github.event.inputs.unit == '' }}
 
   test_vars2:
     runs-on: ubuntu-latest
