@@ -1,0 +1,25 @@
+name: Publish python package
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: package name
+        type: choice
+        options: [eyes_universal, eyes_selenium, eyes_robotframework]
+        required: true
+      version:
+        description: version increment type
+        type: choice
+        options: [patch, minor, major]
+        required: true
+
+jobs:
+
+  test:
+    needs: [make_release_branch]
+    uses: ikseek/test_actions/new/main/.github/workflows/test.yml@master
+    secrets: inherit
+    with:
+      package_name: boom
+
