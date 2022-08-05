@@ -19,7 +19,7 @@ jobs:
   test_vars:
     runs-on: ubuntu-latest
     steps:
-      - run: env
+      - run: echo ${{ toJson(github.event) }}
     env:
      PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
      PACKAGE_NAME_IS_NULL: ${{ inputs.releasing_package == null }}
