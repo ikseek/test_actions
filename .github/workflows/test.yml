@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJson(github.event) }}"
-      - run: echo "${{ inputs }}"
+      - run: echo "${{ toJson(inputs) }}"
     env:
      PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
      PACKAGE_NAME_IS_NULL: ${{ inputs.releasing_package == null }}
