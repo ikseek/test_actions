@@ -7,13 +7,15 @@ on:
         description: Unit tests
         type: boolean
         required: false
-      dispatch_bool:
-        description: workflow dispatch var
-        type: boolean
-        required: false
+        default: false
 
   workflow_call:
     inputs:
+      unit:
+        description: Unit tests
+        type: boolean
+        required: false
+        default: true
       releasing_package:
         description: name of the package being released
         required: false
@@ -23,28 +25,5 @@ jobs:
   test_vars:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(github.event) }}"
       - run: echo "${{ toJson(inputs) }}"
-    env:
-     PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
-     PACKAGE_NAME_IS_NULL: ${{ inputs.releasing_package == null }}
-     PACKAGE_NAME_IN_LIST: ${{ contains('hot, bananas', inputs.releasing_package) }}
-     PACKAGE_NAME_IS_HOT_OR_BANANAS: ${{ inputs.releasing_package == 'hot' || inputs.releasing_package == 'bananas' }}
-     PACKAGE_NAME_ITSELF: ${{ inputs.releasing_package }}
-     EVENTS_UNIT: ${{ github.event.inputs.unit }}
-     EVENTS_UNIT_IS_TRUE: ${{ github.event.inputs.unit == true }}
-     EVENTS_UNIT_IS_STR: ${{ github.event.inputs.unit == 'true' }}
-     EVENTS_UNIT_IS_NULL: ${{ github.event.inputs.unit == null }}
-     EVENTS_UNIT_IS_EMPTY: ${{ github.event.inputs.unit == '' }}
-
-  test_vars2:
-    runs-on: ubuntu-latest
-    if: ${{ inputs.releasing_package || github.event.inputs.unit == 'true' }}
-    steps:
-      - run: env
-    env:
-     PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
-     PACKAGE_NAME_IS_NULL: ${{ inputs.releasing_package == null }}
-     PACKAGE_NAME_IN_LIST: ${{ contains('hot, bananas', inputs.releasing_package) }}
-     PACKAGE_NAME_IS_HOT_OR_BANANAS: ${{ inputs.releasing_package == 'hot' || inputs.releasing_package == 'bananas' }}
-     PACKAGE_NAME_ITSELF: ${{ inputs.releasing_package }}
+      - run: echo "${{ toJson(github.event) }}"
