@@ -7,6 +7,10 @@ on:
         description: Unit tests
         type: boolean
         required: false
+      dispatch_bool:
+        description: workflow dispatch var
+        type: boolean
+        required: false
 
   workflow_call:
     inputs:
@@ -19,7 +23,8 @@ jobs:
   test_vars:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJson(github.event) }}
+      - run: echo "${{ toJson(github.event) }}"
+      - run: echo "${{ inputs }}"
     env:
      PACKAGE_NAME_GIVEN: ${{ inputs.releasing_package && 'given' || 'notgiven'}}
      PACKAGE_NAME_IS_NULL: ${{ inputs.releasing_package == null }}
