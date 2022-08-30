@@ -1,6 +1,6 @@
 name: Build and test python packages
 on:
-  schedule: [ cron: 07 3 * * * ]
+  schedule: [ cron: 08 3 * * * ]
   pull_request:
   workflow_dispatch:
     inputs:
