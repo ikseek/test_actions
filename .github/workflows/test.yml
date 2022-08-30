@@ -34,3 +34,4 @@ jobs:
     steps:
       - run: echo "${{ toJson(inputs) }}"
       - run: echo "${{ toJson(github) }}"
+      - run: echo "${{ toJson(needs) }}"
